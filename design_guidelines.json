@@ -1,0 +1,170 @@
+{
+  "app_name": "Project AI - Core Scanner",
+  "personality": "5 Brutalist Mobile",
+  "personality_one_liner": "A forensic, highly-structured investigative utility that uses stark contrasts, hard borders, and raw data exposure to empower victims with clear, factual evidence.",
+  "color": {
+    "surface": "#FFFFFF",
+    "onSurface": "#000000",
+    "surfaceSecondary": "#F4F4F5",
+    "onSurfaceSecondary": "#000000",
+    "surfaceTertiary": "#E4E4E7",
+    "onSurfaceTertiary": "#000000",
+    "surfaceInverse": "#000000",
+    "onSurfaceInverse": "#FFFFFF",
+    "brand": "#000000",
+    "brandPrimary": "#000000",
+    "onBrandPrimary": "#FFFFFF",
+    "brandSecondary": "#F4F4F5",
+    "onBrandSecondary": "#000000",
+    "brandTertiary": "#E4E4E7",
+    "onBrandTertiary": "#000000",
+    "success": "#00E676",
+    "onSuccess": "#000000",
+    "warning": "#FFEA00",
+    "onWarning": "#000000",
+    "error": "#FF2E00",
+    "onError": "#FFFFFF",
+    "border": "#E4E4E7",
+    "borderStrong": "#000000",
+    "divider": "#E4E4E7"
+  },
+  "typography": {
+    "displayFontFamily": "Space Grotesk",
+    "textFontFamily": "IBM Plex Mono",
+    "scale": {
+      "sm": 12,
+      "base": 14,
+      "lg": 16,
+      "xl": 20,
+      "2xl": 24
+    }
+  },
+  "spacing": {
+    "rule": "Use rigid grids, edge-to-edge sections, hard alignment, and exposed spacing systems. Avoid soft padding; use structured visual tension.",
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 24,
+    "2xl": 32,
+    "3xl": 48
+  },
+  "radius_tokens": {
+    "sm": 0,
+    "md": 0,
+    "lg": 0,
+    "pill": 0
+  },
+  "shadow_tier": "0",
+  "navigation": "bottom_tabs",
+  "icon_set": "Phosphor",
+  "glassmorphism": {
+    "enabled": "false",
+    "do's": [],
+    "dont's": [
+      "Never use glassmorphism or blur in Brutalist personality. Rely on solid surfaceSecondary blocks and thick borders."
+    ]
+  },
+  "platform_libraries": {
+    "glass": {
+      "ios": "solid surfaceSecondary",
+      "android": "solid surfaceSecondary",
+      "low_end_android_fallback": "solid surfaceSecondary"
+    },
+    "image": "expo-image",
+    "blur": "expo-blur",
+    "bottom_sheet": "@gorhom/bottom-sheet",
+    "animation": "react-native-reanimated",
+    "gesture": "react-native-gesture-handler"
+  },
+  "screens": [
+    {
+      "name": "Dashboard",
+      "purpose": "Central command point to launch the 5 scan engines and view system readiness.",
+      "states": {
+        "loading": "Monospaced 'INITIALIZING CORE...' with hard edges.",
+        "empty": "N/A - System always shows tools.",
+        "error": "Stark red block 'SYSTEM OFFLINE' with retry."
+      },
+      "layout": "Top hero section featuring a stark, high-contrast abstract data image. Below, a rigid 2-column grid of bordered cards for 'Text Analysis', 'Photo Scan', 'Profile Check', 'Phone Lookup', and a full-width block for 'Comprehensive Full Scan'. Use thick 2pt borders for structure."
+    },
+    {
+      "name": "Text Scan",
+      "purpose": "Input chat and profile text to receive a LOW/MEDIUM/HIGH risk verdict.",
+      "states": {
+        "loading": "Analyzing syntax...",
+        "empty": "Form awaiting input.",
+        "error": "Error processing text."
+      },
+      "layout": "Single-column form. Monospaced labels above rigid multiline text areas (surfaceSecondary bg, hard border). No horizontal scrolling. A sticky 'ANALYZE TEXT' stark black button locked to the bottom safe area."
+    },
+    {
+      "name": "Photo Scan",
+      "purpose": "Manual checklist of 7 visual manipulation flags to generate a photo risk verdict.",
+      "states": {
+        "loading": "Compiling visual evidence...",
+        "empty": "Checklist unselected.",
+        "error": "Failed to generate verdict."
+      },
+      "layout": "List of switch rows with thick dividers between them for the 7 flags (missing shadow, glasses issue, etc.). A segmented control for Observation Quality (Good/Partial/Poor) with sharp corners. Sticky 'GENERATE VERDICT' button at bottom."
+    },
+    {
+      "name": "Profile Analysis",
+      "purpose": "Numeric inputs and bio text to evaluate profile concern level.",
+      "states": {
+        "loading": "Calculating profile metrics...",
+        "empty": "Form awaiting data.",
+        "error": "Invalid metrics."
+      },
+      "layout": "Single-column input. Use native numeric keyboards for followers, following, posts, photos, account age. Label above input. Monospaced fields. 'Contacted First' toggle block. Sticky primary CTA."
+    },
+    {
+      "name": "Results View",
+      "purpose": "Forensic, evidence-based report of the risk level returned by any scan.",
+      "states": {
+        "loading": "Finalizing report...",
+        "empty": "No data.",
+        "error": "Report generation failed."
+      },
+      "layout": "Top-to-bottom flow. Massive hero summary block with solid color (success/warning/error) mapping to LOW/MEDIUM/HIGH risk. Beneath it, compact evidence cards detailing fired categories and exact metrics. Heavy use of monospaced typography for 'Artifacts' and 'Traces'."
+    },
+    {
+      "name": "History",
+      "purpose": "Local scan history list to track past investigations.",
+      "states": {
+        "loading": "Loading archives...",
+        "empty": "Magnifying glass illustration + 'NO PREVIOUS SCANS RECORDED'.",
+        "error": "Failed to load history."
+      },
+      "layout": "Vertical list of scans. Each row has a thick left-border indicating risk color (green/yellow/red), monospaced timestamp, scan type, and thick bottom divider. Tap opens Results View."
+    }
+  ],
+  "images": {
+    "hero_background": {
+      "url": "https://images.unsplash.com/photo-1644088379091-d574269d422f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGRhdGElMjBhbmFseXNpcyUyMG1pbmltYWx8ZW58MHx8fHwxNzg2MDgzODQ2fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Abstract blue data network lines and dots"
+    },
+    "empty_history": {
+      "url": "https://images.unsplash.com/photo-1743796055664-3473eedab36e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwxfHxtYWduaWZ5aW5nJTIwZ2xhc3MlMjBtaW5pbWFsfGVufDB8fHx8MTc4NjA4Mzg0Nnww&ixlib=rb-4.1.0&q=85",
+      "alt": "Magnifying glass sits near a laptop on a table"
+    }
+  },
+  "haptics": {
+    "primary_button_press": "impactMedium",
+    "scan_complete_low_risk": "notificationSuccess",
+    "scan_complete_medium_risk": "notificationWarning",
+    "scan_complete_high_risk": "notificationError",
+    "tab_change": "selection",
+    "toggle_switch": "impactLight"
+  },
+  "instructions_to_main_agent": [
+    "Implement Brutalist styling strictly: use 0 border radius everywhere (including buttons and cards). Use `borderStrong` (2pt thick) for focused inputs, structural cards, and primary buttons.",
+    "Do NOT use glassmorphism, blurs, or shadows. Depth is created purely through thick borders and stark color contrasts.",
+    "Form design must follow a single-column layout with monospaced labels placed ABOVE the inputs. Use `surfaceSecondary` for text area backgrounds to distinguish them from the white canvas.",
+    "Ensure 'Sticky CTAs' (e.g., ANALYZE TEXT, GENERATE VERDICT) are anchored at the bottom of the screen above the home indicator, allowing scrollable content to pass behind them (though in brutalism, a solid background block behind the button is preferred over blur).",
+    "Result screen risk blocks must be edge-to-edge, heavily saturated (e.g., neon green for safe, warning yellow for medium, signal red for high), with high-contrast text.",
+    "If rendering text on the `hero_background` image, apply a solid top-to-bottom gradient scrim to guarantee legibility, or encapsulate the image within a hard-bordered square and place text outside of it.",
+    "Use Phosphor icons in a consistent filled or regular weight across the app. Do not mix weights.",
+    "Wire up haptics per the `haptics` block in this JSON. High-risk verdicts should specifically trigger `notificationError`."
+  ]
+}
