@@ -1,0 +1,198 @@
+[
+  {
+    "image_path": "/tmp/thames_photo.jpg",
+    "label": "fake",
+    "notes": "Origin case - Greg confident this is composited/re-photographed",
+    "labeled_by": "greg",
+    "t": 1785216131.0886118
+  },
+  {
+    "image_path": "/tmp/emma1.jpg",
+    "label": "fake",
+    "notes": "Part of an 11-photo escalating set, category still being worked out",
+    "labeled_by": "greg",
+    "t": 1785216131.0888412
+  },
+  {
+    "image_path": "/tmp/emma2.jpg",
+    "label": "fake",
+    "notes": "Same set as emma1",
+    "labeled_by": "greg",
+    "t": 1785216131.0890033
+  },
+  {
+    "image_path": "/tmp/avatar_1000002251.jpg",
+    "label": "fake",
+    "notes": "Confirmed same operator running multiple wig profiles",
+    "labeled_by": "greg",
+    "t": 1785216131.0891707
+  },
+  {
+    "image_path": "/tmp/avatar_1000002243.jpg",
+    "label": "fake",
+    "notes": "Same operator, second profile",
+    "labeled_by": "greg",
+    "t": 1785216131.08928
+  },
+  {
+    "image_path": "/tmp/avatar_1000002259.jpg",
+    "label": "fake",
+    "notes": "Same operator, third profile",
+    "labeled_by": "greg",
+    "t": 1785216131.0894265
+  },
+  {
+    "image_path": "/mnt/user-data/uploads/1000000987.jpg",
+    "label": "real",
+    "notes": "Roger placeholder - real unedited photo, two cats/living room, likely a false-positive face detection in background clutter",
+    "labeled_by": "greg",
+    "t": 1785216131.089562
+  },
+  {
+    "image_path": "/mnt/user-data/uploads/1000002093.jpg",
+    "label": "real",
+    "notes": "Roger placeholder - real selfie, clean face detection, indoor low light",
+    "labeled_by": "greg",
+    "t": 1785216131.0898197
+  },
+  {
+    "image_path": "/mnt/user-data/uploads/1000001965.jpg",
+    "label": "real",
+    "notes": "Roger placeholder - real photo by car, person distant/small in frame, outdoor bright sun",
+    "labeled_by": "greg",
+    "t": 1785216131.0899305
+  },
+  {
+    "image_path": "/mnt/user-data/uploads/1000001961.jpg",
+    "label": "real",
+    "notes": "Roger placeholder - real photo by UK postbox, person distant/small in frame, overcast outdoor",
+    "labeled_by": "greg",
+    "t": 1785216131.0901027
+  },
+  {
+    "image_path": "/tmp/eveyn.jpg",
+    "label": "fake",
+    "notes": "Eveyn profile - catalog language matches Type C pattern (number 24313)",
+    "labeled_by": "greg",
+    "t": 1785216324.7392883
+  },
+  {
+    "image_path": "/tmp/blonde.jpg",
+    "label": "fake",
+    "notes": "Blonde woman, car selfie at night, confirmed fake by Greg",
+    "labeled_by": "greg",
+    "t": 1785216324.7395716
+  },
+  {
+    "image_path": "/mnt/user-data/uploads/1000001962.jpg",
+    "label": "real",
+    "notes": "Roger placeholder - UK phone booth photo",
+    "labeled_by": "greg",
+    "t": 1785236501.5867193
+  },
+  {
+    "image_path": "/mnt/user-data/uploads/1000001131.jpg",
+    "label": "real",
+    "notes": "Roger placeholder - red hoodie, hay bales background",
+    "labeled_by": "greg",
+    "t": 1785236501.5870566
+  },
+  {
+    "image_path": "/mnt/user-data/uploads/1000002200.jpg",
+    "label": "real",
+    "notes": "Roger placeholder - hands holding a crystal, no face in frame (likely false-positive face detection)",
+    "labeled_by": "greg",
+    "t": 1785236501.5872488
+  },
+  {
+    "image_path": "/mnt/user-data/uploads/1000001125.jpg",
+    "label": "real",
+    "notes": "Roger placeholder - close selfie, mountain/hills background, clean face+eye detection",
+    "labeled_by": "greg",
+    "t": 1785236501.587425
+  },
+  {
+    "image_path": "/tmp/grad.jpg",
+    "label": "real",
+    "notes": "Roger placeholder - graduation photo, gallery screenshot (real+screenshot combo)",
+    "labeled_by": "greg",
+    "t": 1785281382.615102
+  },
+  {
+    "image_path": "/tmp/twomen1.jpg",
+    "label": "real",
+    "notes": "Roger placeholder - two men selfie, gallery screenshot",
+    "labeled_by": "greg",
+    "t": 1785281382.615653
+  },
+  {
+    "image_path": "/tmp/twomen2.jpg",
+    "label": "real",
+    "notes": "Roger placeholder - two men selfie, gallery screenshot",
+    "labeled_by": "greg",
+    "t": 1785281382.6159544
+  },
+  {
+    "image_path": "/tmp/postbox_screenshot.jpg",
+    "label": "real",
+    "notes": "Roger placeholder - same postbox photo as before but as a gallery screenshot this time",
+    "labeled_by": "greg",
+    "t": 1785281382.618281
+  },
+  {
+    "image_path": "/mnt/user-data/uploads/1000002297.png",
+    "label": "fake",
+    "notes": "jessicabetty940 TikTok-style photo, saved file not a screenshot",
+    "labeled_by": "greg",
+    "t": 1785281382.6188924
+  },
+  {
+    "image_path": "/mnt/user-data/uploads/1000002304.jpg",
+    "label": "fake",
+    "notes": "Sunglasses/night selfie, saved file not a screenshot",
+    "labeled_by": "greg",
+    "t": 1785281382.6191957
+  },
+  {
+    "image_path": "/mnt/user-data/uploads/1000002303.jpg",
+    "label": "fake",
+    "notes": "Woman on white horse, saved file not a screenshot",
+    "labeled_by": "greg",
+    "t": 1785281382.6195858
+  },
+  {
+    "image_path": "/mnt/user-data/uploads/1000002305.jpg",
+    "label": "fake",
+    "notes": "Restaurant/chandelier photo, saved file not a screenshot",
+    "labeled_by": "greg",
+    "t": 1785281382.620118
+  },
+  {
+    "image_path": "/mnt/user-data/uploads/1000002351.jpg",
+    "label": "fake",
+    "notes": "Bella - unsolicited scam text, saved photo file (not screenshot)",
+    "labeled_by": "greg",
+    "t": 1785369033.1632466
+  },
+  {
+    "image_path": "/tmp/bella_screenshot.jpg",
+    "label": "fake",
+    "notes": "Bella - same photo, this time as a screenshot of the actual SMS thread (857) 437-1441",
+    "labeled_by": "greg",
+    "t": 1785369033.1636229
+  },
+  {
+    "image_path": "/mnt/user-data/uploads/1000002452.jpg",
+    "label": "real",
+    "notes": "Roger placeholder - real close-up, glasses, good eye view",
+    "labeled_by": "greg",
+    "t": 1785378161.0227208
+  },
+  {
+    "image_path": "/mnt/user-data/uploads/1000002453.jpg",
+    "label": "real",
+    "notes": "Roger placeholder - real close-up, left pupil misshapen due to injury - intended as a hard-case reference against AI-generated eyes",
+    "labeled_by": "greg",
+    "t": 1785378161.0231044
+  }
+]

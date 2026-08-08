@@ -1,0 +1,111 @@
+[
+  {
+    "text": "Hello my name is Bella. How are you doing today?",
+    "context": {
+      "unknown_number": true,
+      "had_photo_attached": true,
+      "platform": "SMS"
+    },
+    "label": "suspected_scam",
+    "t": 1785369335.1460714
+  },
+  {
+    "text": "How are you doing. Where are you located",
+    "context": {
+      "platform": "TikTok",
+      "handle": "linda.cox823",
+      "following": 4682,
+      "followers": 1740,
+      "unknown_sender": true
+    },
+    "label": "suspected_scam",
+    "t": 1785381398.9460173
+  },
+  {
+    "text": "Hello darling. How are you doing?",
+    "context": {
+      "platform": "TikTok",
+      "handle": "savannah_joyce",
+      "unknown_sender": true,
+      "platform_safety_warning": true
+    },
+    "label": "suspected_scam",
+    "t": 1785381398.946332
+  },
+  {
+    "text": "Hello Greg. How are you doing today and how was your day so far?",
+    "context": {
+      "platform": "TikTok",
+      "handle": "savannah_joyce",
+      "unknown_sender": true,
+      "platform_safety_warning": true
+    },
+    "label": "suspected_scam",
+    "t": 1785381398.9465272
+  },
+  {
+    "text": "Hello. How are you doing. Thanks for the follow back I really appreciate it",
+    "context": {
+      "platform": "TikTok",
+      "handle": "angela.peterson41",
+      "following": 2061,
+      "followers": 97,
+      "likes": 18,
+      "single_post": true,
+      "unknown_sender": true,
+      "platform_safety_warning": true
+    },
+    "label": "suspected_scam",
+    "t": 1785381398.9467337
+  },
+  {
+    "text": "Hey awesome",
+    "context": {
+      "platform": "TikTok",
+      "handle": "clarasmith0008",
+      "following": 1333,
+      "followers": 517,
+      "unknown_sender": true
+    },
+    "label": "suspected_scam",
+    "t": 1785381398.947134
+  },
+  {
+    "text": "Hello How're you doing today have you been a daddydaluxe?",
+    "context": {
+      "platform": "TikTok",
+      "handle": "cinderellakate1",
+      "following": 704,
+      "followers": 216,
+      "unknown_sender": true,
+      "business_chat_notice": true
+    },
+    "label": "suspected_scam",
+    "t": 1785381398.9473538
+  },
+  {
+    "text": "Where are you from",
+    "context": {
+      "platform": "TikTok",
+      "handle": "emmie316",
+      "following": 9997,
+      "followers": 1960,
+      "account_later_suspended": true,
+      "greg_messaged_first": true
+    },
+    "label": "suspected_scam",
+    "t": 1785381398.947582
+  },
+  {
+    "text": "Where are you from dear?",
+    "context": {
+      "platform": "TikTok",
+      "handle": "kate.alice670",
+      "following": 838,
+      "followers": 831,
+      "unknown_sender": true
+    },
+    "label": "suspected_scam",
+    "t": 1785381398.94783
+  }
+]
