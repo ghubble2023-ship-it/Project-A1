@@ -1,0 +1,11 @@
+# OpenCV 5 removed the bundled Haar cascade XML files that sentinel.detect
+# falls back on. Pin below 5 unless you supply a YuNet ONNX model via
+# SENTINEL_YUNET_MODEL, in which case any 4.9+ or 5.x build works.
+opencv-python-headless>=4.9,<5
+numpy>=1.24
+scipy>=1.10
+pillow>=10.0
+fastapi>=0.110
+uvicorn[standard]>=0.27
+python-multipart>=0.0.9
+pydantic>=2.6

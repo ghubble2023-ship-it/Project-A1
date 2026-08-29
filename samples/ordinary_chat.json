@@ -1,0 +1,9 @@
+{
+  "_comment": "Benign control transcript: the system should stay quiet on this.",
+  "messages": [
+    {"sender": "suspect", "text": "hey! how was your weekend"},
+    {"sender": "suspect", "text": "I went hiking with my sister on saturday, it rained the entire time lol"},
+    {"sender": "suspect", "text": "anyway, are we still on for coffee thursday?"},
+    {"sender": "suspect", "text": "cool, see you then"}
+  ]
+}

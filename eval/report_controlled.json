@@ -1,0 +1,148 @@
+{
+  "view": "controlled",
+  "per_signal": {
+    "ca_radial_alignment": {
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "coverage": 1.0,
+      "auc": 0.736,
+      "median_authentic": 0.63721,
+      "median_synthetic": 0.69032,
+      "fitted": true,
+      "weight": 0.373
+    },
+    "ca_radial_slope": {
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "coverage": 1.0,
+      "auc": 0.606,
+      "median_authentic": -0.05213,
+      "median_synthetic": 0.02114,
+      "fitted": true,
+      "weight": 0.062
+    },
+    "corneal_env_dissimilarity": {
+      "n_authentic": 20,
+      "n_synthetic": 10,
+      "coverage": 0.612,
+      "auc": 0.695,
+      "median_authentic": 0.5941,
+      "median_synthetic": 0.62162,
+      "fitted": true,
+      "weight": 0.274
+    },
+    "exif_capture_completeness": {
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "coverage": 1.0,
+      "auc": 0.5,
+      "median_authentic": 0.0,
+      "median_synthetic": 0.0,
+      "fitted": true,
+      "weight": 0.0
+    },
+    "generator_tag_present": {
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "coverage": 1.0,
+      "auc": 0.5,
+      "median_authentic": 0.0,
+      "median_synthetic": 0.0,
+      "fitted": true,
+      "weight": 0.0
+    },
+    "jpeg_blockiness": {
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "coverage": 1.0,
+      "auc": 0.437,
+      "median_authentic": 1.08705,
+      "median_synthetic": 1.07998,
+      "fitted": true,
+      "weight": 0.0
+    },
+    "ocular_angle_divergence": {
+      "n_authentic": 20,
+      "n_synthetic": 10,
+      "coverage": 0.612,
+      "auc": 0.38,
+      "median_authentic": 71.614,
+      "median_synthetic": 47.1665,
+      "fitted": true,
+      "weight": 0.095
+    },
+    "ocular_area_ratio": {
+      "n_authentic": 20,
+      "n_synthetic": 10,
+      "coverage": 0.612,
+      "auc": 0.45,
+      "median_authentic": 2.48725,
+      "median_synthetic": 1.7386,
+      "fitted": true,
+      "weight": 0.0
+    },
+    "ocular_circularity_delta": {
+      "n_authentic": 20,
+      "n_synthetic": 10,
+      "coverage": 0.612,
+      "auc": 0.51,
+      "median_authentic": 0.11484,
+      "median_synthetic": 0.07767,
+      "fitted": true,
+      "weight": 0.0
+    },
+    "ocular_offset_disparity": {
+      "n_authentic": 20,
+      "n_synthetic": 10,
+      "coverage": 0.612,
+      "auc": 0.525,
+      "median_authentic": 0.1366,
+      "median_synthetic": 0.12115,
+      "fitted": true,
+      "weight": 0.0
+    },
+    "residual_energy": {
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "coverage": 1.0,
+      "auc": 0.745,
+      "median_authentic": 7.09971,
+      "median_synthetic": 8.67276,
+      "fitted": true,
+      "weight": 0.394
+    },
+    "residual_kurtosis": {
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "coverage": 1.0,
+      "auc": 0.444,
+      "median_authentic": 10.11561,
+      "median_synthetic": 10.44245,
+      "fitted": true,
+      "weight": 0.0
+    },
+    "upsampling_peak_prominence": {
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "coverage": 1.0,
+      "auc": 0.405,
+      "median_authentic": 3.9814,
+      "median_synthetic": 3.8153,
+      "fitted": true,
+      "weight": 0.035
+    }
+  },
+  "fused_loo": {
+    "n_authentic": 37,
+    "n_synthetic": 12,
+    "auc": 0.7748,
+    "mean_score_authentic": 0.4007,
+    "mean_score_synthetic": 0.5342,
+    "best_operating_point": {
+      "threshold": 0.56,
+      "accuracy": 0.8163,
+      "sensitivity": 0.6667,
+      "specificity": 0.8649
+    }
+  }
+}

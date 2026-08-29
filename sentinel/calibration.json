@@ -1,0 +1,272 @@
+{
+  "meta": {
+    "fused_loo": {
+      "auc": 0.7748,
+      "best_operating_point": {
+        "accuracy": 0.8163,
+        "sensitivity": 0.6667,
+        "specificity": 0.8649,
+        "threshold": 0.56
+      },
+      "mean_score_authentic": 0.4007,
+      "mean_score_synthetic": 0.5342,
+      "n_authentic": 37,
+      "n_synthetic": 12
+    },
+    "n_images": 49,
+    "per_signal": {
+      "ca_radial_alignment": {
+        "auc": 0.736,
+        "coverage": 1.0,
+        "fitted": true,
+        "median_authentic": 0.63721,
+        "median_synthetic": 0.69032,
+        "n_authentic": 37,
+        "n_synthetic": 12,
+        "weight": 0.373
+      },
+      "ca_radial_slope": {
+        "auc": 0.606,
+        "coverage": 1.0,
+        "fitted": true,
+        "median_authentic": -0.05213,
+        "median_synthetic": 0.02114,
+        "n_authentic": 37,
+        "n_synthetic": 12,
+        "weight": 0.062
+      },
+      "corneal_env_dissimilarity": {
+        "auc": 0.695,
+        "coverage": 0.612,
+        "fitted": true,
+        "median_authentic": 0.5941,
+        "median_synthetic": 0.62162,
+        "n_authentic": 20,
+        "n_synthetic": 10,
+        "weight": 0.274
+      },
+      "exif_capture_completeness": {
+        "auc": 0.5,
+        "coverage": 1.0,
+        "fitted": true,
+        "median_authentic": 0.0,
+        "median_synthetic": 0.0,
+        "n_authentic": 37,
+        "n_synthetic": 12,
+        "weight": 0.0
+      },
+      "generator_tag_present": {
+        "auc": 0.5,
+        "coverage": 1.0,
+        "fitted": true,
+        "median_authentic": 0.0,
+        "median_synthetic": 0.0,
+        "n_authentic": 37,
+        "n_synthetic": 12,
+        "weight": 0.0
+      },
+      "jpeg_blockiness": {
+        "auc": 0.437,
+        "coverage": 1.0,
+        "fitted": true,
+        "median_authentic": 1.08705,
+        "median_synthetic": 1.07998,
+        "n_authentic": 37,
+        "n_synthetic": 12,
+        "weight": 0.0
+      },
+      "ocular_angle_divergence": {
+        "auc": 0.38,
+        "coverage": 0.612,
+        "fitted": true,
+        "median_authentic": 71.614,
+        "median_synthetic": 47.1665,
+        "n_authentic": 20,
+        "n_synthetic": 10,
+        "weight": 0.095
+      },
+      "ocular_area_ratio": {
+        "auc": 0.45,
+        "coverage": 0.612,
+        "fitted": true,
+        "median_authentic": 2.48725,
+        "median_synthetic": 1.7386,
+        "n_authentic": 20,
+        "n_synthetic": 10,
+        "weight": 0.0
+      },
+      "ocular_circularity_delta": {
+        "auc": 0.51,
+        "coverage": 0.612,
+        "fitted": true,
+        "median_authentic": 0.11484,
+        "median_synthetic": 0.07767,
+        "n_authentic": 20,
+        "n_synthetic": 10,
+        "weight": 0.0
+      },
+      "ocular_offset_disparity": {
+        "auc": 0.525,
+        "coverage": 0.612,
+        "fitted": true,
+        "median_authentic": 0.1366,
+        "median_synthetic": 0.12115,
+        "n_authentic": 20,
+        "n_synthetic": 10,
+        "weight": 0.0
+      },
+      "residual_energy": {
+        "auc": 0.745,
+        "coverage": 1.0,
+        "fitted": true,
+        "median_authentic": 7.09971,
+        "median_synthetic": 8.67276,
+        "n_authentic": 37,
+        "n_synthetic": 12,
+        "weight": 0.394
+      },
+      "residual_kurtosis": {
+        "auc": 0.444,
+        "coverage": 1.0,
+        "fitted": true,
+        "median_authentic": 10.11561,
+        "median_synthetic": 10.44245,
+        "n_authentic": 37,
+        "n_synthetic": 12,
+        "weight": 0.0
+      },
+      "upsampling_peak_prominence": {
+        "auc": 0.405,
+        "coverage": 1.0,
+        "fitted": true,
+        "median_authentic": 3.9814,
+        "median_synthetic": 3.8153,
+        "n_authentic": 37,
+        "n_synthetic": 12,
+        "weight": 0.035
+      }
+    },
+    "source": "/home/user/data/ds/controlled",
+    "view": "controlled"
+  },
+  "prior_log_odds": 0.0,
+  "signals": {
+    "ca_radial_alignment": {
+      "auc": 0.7364864864864865,
+      "mu_authentic": 0.6398062162162161,
+      "mu_synthetic": 0.6871083333333332,
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "sd_authentic": 0.07138366814317454,
+      "sd_synthetic": 0.042100018177615495
+    },
+    "ca_radial_slope": {
+      "auc": 0.6058558558558559,
+      "mu_authentic": -0.11198351351351352,
+      "mu_synthetic": 0.05693099999999999,
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "sd_authentic": 0.5304287909598372,
+      "sd_synthetic": 0.13431919325807462
+    },
+    "corneal_env_dissimilarity": {
+      "auc": 0.695,
+      "mu_authentic": 0.5913475,
+      "mu_synthetic": 0.6671980000000002,
+      "n_authentic": 20,
+      "n_synthetic": 10,
+      "sd_authentic": 0.12754268383074743,
+      "sd_synthetic": 0.10062626523925054
+    },
+    "exif_capture_completeness": {
+      "auc": 0.5,
+      "mu_authentic": 0.0,
+      "mu_synthetic": 0.0,
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "sd_authentic": 0.0001,
+      "sd_synthetic": 0.0001
+    },
+    "generator_tag_present": {
+      "auc": 0.5,
+      "mu_authentic": 0.0,
+      "mu_synthetic": 0.0,
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "sd_authentic": 0.0001,
+      "sd_synthetic": 0.0001
+    },
+    "jpeg_blockiness": {
+      "auc": 0.4369369369369369,
+      "mu_authentic": 1.087595135135135,
+      "mu_synthetic": 1.0765500000000001,
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "sd_authentic": 0.045980301341642216,
+      "sd_synthetic": 0.03592755186946828
+    },
+    "ocular_angle_divergence": {
+      "auc": 0.38,
+      "mu_authentic": 77.95405,
+      "mu_synthetic": 56.11429999999999,
+      "n_authentic": 20,
+      "n_synthetic": 10,
+      "sd_authentic": 54.56265054272474,
+      "sd_synthetic": 30.146009570256552
+    },
+    "ocular_area_ratio": {
+      "auc": 0.45,
+      "mu_authentic": 9.549940000000001,
+      "mu_synthetic": 3.50463,
+      "n_authentic": 20,
+      "n_synthetic": 10,
+      "sd_authentic": 26.752868122210746,
+      "sd_synthetic": 3.5082428254184457
+    },
+    "ocular_circularity_delta": {
+      "auc": 0.51,
+      "mu_authentic": 0.1316765,
+      "mu_synthetic": 0.12578899999999998,
+      "n_authentic": 20,
+      "n_synthetic": 10,
+      "sd_authentic": 0.11988747875716631,
+      "sd_synthetic": 0.11791140915534848
+    },
+    "ocular_offset_disparity": {
+      "auc": 0.525,
+      "mu_authentic": 0.15393099999999998,
+      "mu_synthetic": 0.16623899999999997,
+      "n_authentic": 20,
+      "n_synthetic": 10,
+      "sd_authentic": 0.14054084850675977,
+      "sd_synthetic": 0.13147370759585356
+    },
+    "residual_energy": {
+      "auc": 0.7454954954954955,
+      "mu_authentic": 7.343559729729729,
+      "mu_synthetic": 8.893758333333334,
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "sd_authentic": 1.7460202169729608,
+      "sd_synthetic": 1.4376841598895156
+    },
+    "residual_kurtosis": {
+      "auc": 0.4436936936936937,
+      "mu_authentic": 11.895694594594595,
+      "mu_synthetic": 10.324420833333333,
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "sd_authentic": 6.075781760851892,
+      "sd_synthetic": 4.207126480062249
+    },
+    "upsampling_peak_prominence": {
+      "auc": 0.40540540540540543,
+      "mu_authentic": 4.25048918918919,
+      "mu_synthetic": 3.9012583333333333,
+      "n_authentic": 37,
+      "n_synthetic": 12,
+      "sd_authentic": 0.9697322733854375,
+      "sd_synthetic": 0.5027137960747535
+    }
+  }
+}

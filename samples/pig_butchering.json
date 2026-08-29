@@ -1,0 +1,12 @@
+{
+  "_comment": "Synthetic transcript composed for testing. Not a real conversation.",
+  "messages": [
+    {"sender": "suspect", "text": "Hello, is this Dr. Linda? My assistant gave me this number for our clinic meeting."},
+    {"sender": "victim",  "text": "No, you have the wrong number."},
+    {"sender": "suspect", "text": "Oh, so sorry to bother you! It must be destiny that we connected anyway. Do you have WhatsApp? wa.me/15415550199"},
+    {"sender": "victim",  "text": "I guess so."},
+    {"sender": "suspect", "text": "I was just finishing my market analysis with my uncle. He has insider signals, we see guaranteed returns on this DeFi dapp smart contract."},
+    {"sender": "suspect", "text": "You only need a small test deposit to activate your VIP node. Send USDT to TJRabPrwbZy45sbavfcjinPJC18kjpRTv8"},
+    {"sender": "suspect", "text": "Please keep this between us, your bank will not understand. The liquidity pool closes in 15 minutes."}
+  ]
+}
