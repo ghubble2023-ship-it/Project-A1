@@ -267,6 +267,41 @@ scored 0.0 on the transcript above. It is now a hyperbolic decay
 (`k / (k + first − 1)`), which keeps the strong preference for early asks
 without ever claiming a mid-conversation ask is uninformative.
 
+### Answering a question left in the Drive
+
+`Chats` also contains `validate_ocr.py`, written by an earlier collaborator on
+this project, which opens:
+
+> *"I could not test this on real screenshots. Every number in OCR_NOTES.md came
+> from synthetic images with known ground truth. Real captures have status bars,
+> avatars, timestamps, reactions, read receipts and date dividers, and some of
+> those WILL segment as bubbles. This finds out how often."*
+
+It had never been run on real captures. It has now, against all 35 in the Drive:
+
+| | `Chats` (18 real two-sided conversations) | `Social media pics` (17 feed captures) |
+|---|---|---|
+| images with 0 bubbles | **0 (0%)** | 0 (0%) |
+| bubbles per image | median 12 | median 5 |
+| share attributed to "them" | **53%** | 83% |
+| images 100% one-sided | **0 (0%)** | 7 (41%) |
+| tiny (<28px) + full-width junk rows | 58 of ~221 (26%) | 35 of ~95 (37%) |
+
+On genuine two-sided chat captures the geometry holds up: nothing failed
+outright, and the failure the author flagged as *"the dangerous one — means a
+whole speaker was lost, which corrupts the money-direction rule silently"* did
+not occur once. The 53/47 split is what a real conversation should look like.
+
+The real finding is the ~26% junk-row rate — status bars, timestamps and date
+dividers segmenting as messages — which needs filtering before any of this
+feeds a transcript.
+
+And one caveat on the validation design itself: the "100% one-sided" alarm fires
+on 41% of `Social media pics`, but those are **feeds** (TikTok, Threads, X), where
+there genuinely is only one speaker. The metric cannot distinguish *"a speaker
+was lost"* from *"there was only ever one"*, so it is only diagnostic when you
+already know the capture is a two-sided conversation.
+
 ### The honest caveat
 
 These rules were derived from **one** real scam transcript plus published
