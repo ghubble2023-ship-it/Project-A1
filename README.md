@@ -184,6 +184,102 @@ tell from this" rather than a fabricated probability.
 
 ---
 
+## `Chats` and `Chat string`: what a real scam did to the rule set
+
+The last two corpora are conversations, and between them they supply what the
+text pipeline never had — a labelled positive **and** a hard negative.
+
+`Chat string` contains a complete gift-card romance scam, transcribed. It runs
+the full funnel: cold open, location probe, isolation probe, rapid
+sexualisation, an errand, a transport pretext, the card, and then four separate
+requests to *photograph* it. `Chats` is 18 screenshots of an ordinary domestic
+argument — emotionally charged, mentions buying a birthday present, includes an
+accusation about not answering the phone. Every one of those neighbours a scam
+rule.
+
+**Before the fix**, the rule set scored them like this:
+
+| conversation | score | band | rules fired |
+|---|---|---|---|
+| completed gift-card scam | 0.29 | ELEVATED | **1 of 17** (`Apple Card`) |
+| domestic argument | 0.00 | MINIMAL | 0 |
+
+Specificity was fine. Sensitivity was not: an unambiguous, completed fraud —
+one where the victim had already bought the card — scored three bands below the
+top on the strength of a single keyword.
+
+The reason is that the 17 rules were written for **investment** fraud: pig
+butchering, task scams, account takeover, recovery fraud. Gift-card romance
+fraud runs a different funnel, and the most diagnostic moment in it was missing
+entirely. A gift card in the victim's hand costs the fraudster nothing. **The
+money moves when they photograph the numbers.** "Can I see a picture of it" —
+repeated four times in the transcript — was invisible to the system.
+
+Six rules were added, covering the funnel rather than the keyword:
+
+| rule | stage | what it catches |
+|---|---|---|
+| `groom_locate` | 1 | early probe for a zip code or precise location |
+| `groom_isolation` | 2 | "do you live alone" |
+| `pay_errand` | 3 | "can you get me something at the store" |
+| `pay_pretext` | 3 | unverifiable stranded / no-gas / customs-fee reason |
+| `pay_proof` | 4 | **the card numbers, code, or a photo of the back** |
+| `iso_guilt` | 3 | "you are ignoring me" when the target stalls |
+
+**After**, the same two conversations:
+
+| conversation | score | band | playbooks |
+|---|---|---|---|
+| completed gift-card scam | **0.68** | **HIGH** | payment_pressure, grooming, coercion |
+| domestic argument | 0.00 | MINIMAL | none |
+
+and the report now quotes the funnel back in the sender's own words, in order:
+`What your zip code` → `did you live alone` → `Can you get me` → `no gas in my
+car` → `Apple Card` → `Can I see a picture of it` → `You are ignoring me` →
+`What of the card`.
+
+### Two defects the new tests caught immediately
+
+Writing the specificity tests found two bugs in the same afternoon they were
+introduced, which is the argument for writing them.
+
+**A false positive I created.** The first `pay_proof` pattern made the object
+optional, so a bare *"did you see the picture I sent"* — an ordinary sentence —
+scored 0.58 HIGH on its own. The rule now requires the referent (`of it`, `of
+the card`, `the numbers on the back`). That costs one hit on the reference
+transcript and removes the false positive; a context-free rule cannot have both,
+and precision wins because the surrounding funnel still fires.
+
+**A report that contradicted itself.** A playbook needs 0.25 to be named, but a
+single low-severity grooming hit saturates to 0.20. The response was listing the
+matched phrase under `payment_pressure` while `identified_playbooks` said
+`none_matched`. Weak matches are now reported as `weak_matches` rather than
+silently dropped, and a test asserts the two fields partition.
+
+### The escalation metric was measuring the wrong thing
+
+`escalation_velocity` scored `1 − (first_ask − 1) / 10`, which reaches zero at
+message 11 and stays there. That is a cliff, not a decay: an ask at message 21
+scored identically to an ask at message 500. Since real gift-card and romance
+approaches routinely spend twenty messages building rapport before the ask, the
+component contributed **exactly nothing on the cases it existed to catch** — it
+scored 0.0 on the transcript above. It is now a hyperbolic decay
+(`k / (k + first − 1)`), which keeps the strong preference for early asks
+without ever claiming a mid-conversation ask is uninformative.
+
+### The honest caveat
+
+These rules were derived from **one** real scam transcript plus published
+gift-card fraud tradecraft, and validated against **one** real benign
+conversation. That is enough to prove the funnel was missing and to fix it; it
+is nowhere near enough to quote a false-positive rate. The text scorer remains a
+**rule-based rubric, not a statistically calibrated model**, and it says so in
+its own output. `eval/run_text_eval.py` exists to fit a real calibration through
+the same fusion machinery as the image path, and it needs a labelled transcript
+corpus that does not yet exist.
+
+---
+
 ## How the scoring works
 
 Every threshold lives in `sentinel/calibration.json`, not in code. A calibration

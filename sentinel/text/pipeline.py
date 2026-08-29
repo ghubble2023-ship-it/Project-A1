@@ -146,6 +146,14 @@ def analyse_conversation(
         (p for p, v in playbooks.items() if v["score"] >= 0.25),
         key=lambda p: -playbooks[p]["score"],
     )
+    # A playbook can match a phrase without clearing the naming threshold -- one
+    # low-severity grooming hit saturates to 0.20. Reporting those phrases while
+    # simultaneously claiming "none_matched" is a contradiction the reader has to
+    # resolve, so weak matches are named as weak rather than silently dropped.
+    weak = sorted(
+        (p for p, v in playbooks.items() if 0 < v["score"] < 0.25),
+        key=lambda p: -playbooks[p]["score"],
+    )
 
     advice: list[str] = []
     for p in active:
@@ -168,6 +176,7 @@ def analyse_conversation(
             },
         },
         "identified_playbooks": active or ["none_matched"],
+        "weak_matches": weak,
         "playbook_detail": playbooks,
         "escalation": velocity,
         "matched_phrases": [

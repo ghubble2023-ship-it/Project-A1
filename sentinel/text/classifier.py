@@ -133,7 +133,19 @@ def escalation_velocity(hits: list[dict[str, Any]], n_suspect: int) -> dict[str,
     first = min(h["suspect_message_number"] for h in urgent)
     early = first <= EARLY_WINDOW
     # Fast asks score high; the same ask deep into a real friendship does not.
-    score = max(0.0, min(1.0, 1.0 - (first - 1) / (2.0 * EARLY_WINDOW)))
+    #
+    # This was previously linear -- 1 - (first-1)/(2*EARLY_WINDOW) -- which hits
+    # zero at message 11 and stays there. That is a cliff, not a decay: an ask at
+    # message 21 scored identically to an ask at message 500, and since real
+    # gift-card and romance approaches routinely spend twenty messages on
+    # rapport before the ask, the component contributed exactly nothing on the
+    # cases it was meant to catch. A hyperbolic decay keeps the same ordering and
+    # the same strong preference for early asks, but never asserts that a
+    # mid-conversation ask carries no information at all.
+    #
+    #   message  1 -> 1.00      message 11 -> 0.33
+    #   message  6 -> 0.50      message 21 -> 0.20
+    score = EARLY_WINDOW / (EARLY_WINDOW + max(0, first - 1))
     return {
         "score": round(score, 4),
         "first_ask_at_message": first,

@@ -126,6 +126,71 @@ RULES: list[Rule] = [
         r"western union|moneygram|wire transfer|zelle|cash ?app|"
         r"bitcoin atm|crypto atm|btc address|wallet address)",
     ),
+    # The theft itself. A gift card in the victim's hand costs the fraudster
+    # nothing; the money moves only when they photograph the numbers. Asking to
+    # *see* the card is therefore the most diagnostic moment in the whole
+    # exchange, and it is the point at which the loss becomes irreversible.
+    # The referent is mandatory. An early draft allowed a bare "can I see the
+    # picture", which fires on "did you see the picture I sent" -- an ordinary
+    # sentence -- and pushed a single innocuous message to HIGH. Requiring the
+    # card/code object costs one hit on the reference transcript ("Can I see the
+    # picture", said three messages after the card was named) and removes the
+    # false positive. Context-free rules cannot have both; precision wins,
+    # because the surrounding funnel still fires.
+    Rule.make(
+        "pay_proof", "payment_pressure", 4, 0.85,
+        "Request for the card numbers, code or a photo of the receipt",
+        r"\b(?:(?:can|could|let) (?:i|me) see (?:a |the )?(?:pic(?:ture)?|photo|image)"
+        r" of (?:it|them|the card|the code|the back|the receipt)|"
+        r"send (?:me )?(?:a |the )?(?:pic(?:ture)?|photo) of (?:it|the card|the code|the back)|"
+        r"scratch (?:off )?the (?:back|silver|panel)|"
+        r"(?:numbers?|code|pin) on the (?:back|card)|"
+        r"read (?:me )?the (?:numbers?|code)|"
+        r"what(?:'?s| is| of) the (?:card|code|number)|"
+        r"redeem(?:ing)? code|card details)",
+    ),
+    # The pretext that justifies the errand. Distinct from the rail itself:
+    # the fraudster needs a reason the victim must buy something *now*, and a
+    # transport failure is the most common because it is unverifiable and
+    # implies imminent arrival.
+    Rule.make(
+        "pay_pretext", "payment_pressure", 3, 0.45,
+        "Unverifiable stranded / transport pretext for needing money now",
+        r"\b(?:no gas in my car|out of gas|need gas money|"
+        r"my car (?:broke|broke down|won'?t start)|"
+        r"stuck at the (?:airport|station|border)|"
+        r"need (?:money )?for (?:a )?(?:ticket|taxi|uber|cab|fare)|"
+        r"customs (?:fee|charge|clearance)|delivery fee to release)",
+    ),
+    Rule.make(
+        "pay_errand", "payment_pressure", 3, 0.40,
+        "Request that the target buy something on the sender's behalf",
+        r"\b(?:(?:can|could|will) you (?:get|buy|pick up|grab) (?:me|it|something|that)"
+        r"(?: at| from)? (?:the )?(?:store|shop|walmart|target|cvs|walgreens)?|"
+        r"just get it for me|get it and i'?ll pay you back|"
+        r"(?:go|stop) (?:to|by) the store for me)",
+    ),
+
+    # -- Grooming: mapping the target before the ask --------------------------
+    # Low severity on their own. A new acquaintance may reasonably ask where you
+    # live. These matter as *company* -- an isolation probe next to a payment
+    # push is a different object from either alone -- which is exactly what the
+    # stage-span bonus in the classifier is for.
+    Rule.make(
+        "groom_locate", "grooming", 1, 0.25,
+        "Early probe for precise location",
+        r"\b(?:what(?:'?s| is)? your zip ?code|what zip|your postcode|"
+        r"which (?:city|town) (?:are you|do you live) in|"
+        r"where exactly (?:are you|do you live)|are you near(?:by)?)",
+    ),
+    Rule.make(
+        "groom_isolation", "grooming", 2, 0.50,
+        "Probe for whether the target is alone",
+        r"\b(?:d(?:o|id) you live alone|are you (?:home )?alone|"
+        r"anyone (?:else )?(?:there|home) with you|"
+        r"is (?:anyone|someone) (?:with|around) you|"
+        r"do you live (?:by yourself|with anyone))",
+    ),
 
     # -- Coercion: isolation and artificial urgency ---------------------------
     Rule.make(
@@ -134,6 +199,18 @@ RULES: list[Rule] = [
         r"\b(?:keep this between us|don'?t tell (?:your |any)?"
         r"(?:family|spouse|husband|wife|bank|anyone|kids)|"
         r"they (?:won'?t|wouldn'?t) understand|strictly confidential)",
+    ),
+    # Pressure applied to silence rather than to a deadline. When a target stops
+    # replying mid-ask, fraudsters switch from seduction to grievance, because
+    # guilt reliably restarts a stalled conversation.
+    Rule.make(
+        "iso_guilt", "coercion", 3, 0.40,
+        "Guilt or accusation when the target stops replying",
+        r"\b(?:you(?:'?re| are) ignoring me|why (?:are|arent|aren'?t) you "
+        r"(?:answering|replying|responding)|"
+        r"(?:i thought )?you said you (?:would|loved|cared)|"
+        r"don'?t you (?:trust|love|care about) me|"
+        r"you(?:'?re| are) not serious about (?:me|us))",
     ),
     Rule.make(
         "iso_urgency", "coercion", 2, 0.45,
