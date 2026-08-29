@@ -1,0 +1,121 @@
+{
+  "train": "1strealtest",
+  "test": "emergent",
+  "n_train": 49,
+  "n_test": 25,
+  "in_sample_train": {
+    "n_authentic": 37,
+    "n_synthetic": 12,
+    "auc": 0.8986,
+    "mean_score_authentic": 0.3656,
+    "mean_score_synthetic": 0.6124,
+    "best_operating_point": {
+      "threshold": 0.55,
+      "accuracy": 0.898,
+      "sensitivity": 0.8333,
+      "specificity": 0.9189
+    }
+  },
+  "transfer_to_test": {
+    "n_authentic": 12,
+    "n_synthetic": 13,
+    "auc": 0.6282,
+    "mean_score_authentic": 0.3557,
+    "mean_score_synthetic": 0.4211,
+    "best_operating_point": {
+      "threshold": 0.33,
+      "accuracy": 0.68,
+      "sensitivity": 0.6923,
+      "specificity": 0.6667
+    }
+  },
+  "per_signal_direction": {
+    "ca_radial_alignment": {
+      "auc_train_corpus": 0.736,
+      "auc_test_corpus": 0.41,
+      "sign_flip": true,
+      "stable": false
+    },
+    "ca_radial_slope": {
+      "auc_train_corpus": 0.606,
+      "auc_test_corpus": 0.487,
+      "sign_flip": true,
+      "stable": false
+    },
+    "corneal_env_dissimilarity": {
+      "auc_train_corpus": 0.695,
+      "auc_test_corpus": 0.58,
+      "sign_flip": false,
+      "stable": false
+    },
+    "exif_capture_completeness": {
+      "auc_train_corpus": 0.5,
+      "auc_test_corpus": 0.5,
+      "sign_flip": false,
+      "stable": false
+    },
+    "generator_tag_present": {
+      "auc_train_corpus": 0.5,
+      "auc_test_corpus": 0.5,
+      "sign_flip": false,
+      "stable": false
+    },
+    "jpeg_blockiness": {
+      "auc_train_corpus": 0.437,
+      "auc_test_corpus": 0.417,
+      "sign_flip": false,
+      "stable": false
+    },
+    "ocular_angle_divergence": {
+      "auc_train_corpus": 0.38,
+      "auc_test_corpus": 0.455,
+      "sign_flip": false,
+      "stable": false
+    },
+    "ocular_area_ratio": {
+      "auc_train_corpus": 0.45,
+      "auc_test_corpus": 0.648,
+      "sign_flip": true,
+      "stable": false
+    },
+    "ocular_circularity_delta": {
+      "auc_train_corpus": 0.51,
+      "auc_test_corpus": 0.545,
+      "sign_flip": false,
+      "stable": false
+    },
+    "ocular_offset_disparity": {
+      "auc_train_corpus": 0.525,
+      "auc_test_corpus": 0.716,
+      "sign_flip": false,
+      "stable": false
+    },
+    "residual_energy": {
+      "auc_train_corpus": 0.745,
+      "auc_test_corpus": 0.724,
+      "sign_flip": false,
+      "stable": true
+    },
+    "residual_kurtosis": {
+      "auc_train_corpus": 0.444,
+      "auc_test_corpus": 0.205,
+      "sign_flip": false,
+      "stable": false
+    },
+    "upsampling_peak_prominence": {
+      "auc_train_corpus": 0.405,
+      "auc_test_corpus": 0.615,
+      "sign_flip": true,
+      "stable": false
+    }
+  },
+  "stable_signals": [
+    "residual_energy"
+  ],
+  "sign_flipped_signals": [
+    "ca_radial_alignment",
+    "ca_radial_slope",
+    "ocular_area_ratio",
+    "upsampling_peak_prominence"
+  ]
+}

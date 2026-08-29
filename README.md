@@ -25,55 +25,112 @@ appeal.
 
 ## The headline result
 
+Three corpora, three views, and one number that survives all of them.
+
 The labelled folders in `1strealtest` are **badly confounded**. The authentic set
 is 256×256 aligned face thumbnails; the synthetic set is 640–1280px full-scene
 selfies. Resolution, JPEG history and framing all correlate perfectly with the
 label, so almost any statistic separates them — and almost none of that
 separation is about authenticity.
 
-So the evaluation builds two views of the same data and reports both:
+So the evaluation builds two views of the same data, then adds a **second,
+independent corpus from a different generator family** (`Emergent`, StyleGAN-type
+faces vs FFHQ originals, both natively 256×256 — internally matched, no
+resolution confound):
 
-| view | what it is | LOO-CV AUC | accuracy |
+| what was measured | how | AUC | accuracy |
 |---|---|---|---|
-| `raw` | the files as given | **0.991** | 96.4% |
-| `controlled` | both classes face-cropped to 256×256 and re-encoded at one fixed JPEG quality | **0.775** | 81.6% (sens 0.67 / spec 0.86) |
+| `1strealtest` raw | the files as given | 0.991 | 96.4% |
+| `1strealtest` controlled | face-cropped to 256×256, one fixed JPEG quality | 0.775 | 81.6% |
+| **transfer** → unseen generator | fit on `1strealtest`, scored on `Emergent`, n=25 | **0.628** | 68% |
+| **pooled, both corpora** | LOO-CV over 74 images from both families | **0.625** | — |
+| pooled, corpus-balanced | 24/24, so corpus cannot proxy for label | **0.618** | 66.7% |
 
-**0.775 is the honest number.** The 0.991 is what you get by measuring the folders.
+**0.62 is the honest number.** Not 0.99, and not 0.775 either.
 
-You can watch the confounds evaporate:
+The 0.991 is what you get by measuring the folders. The 0.775 is what you get
+after controlling capture pipeline but still measuring *one* generator — roughly
+0.15 AUC of it turns out to be corpus-specific. The three independent estimates
+that involve an unseen generator (transfer, pooled, balanced-pooled) all land
+between 0.618 and 0.628, and the balanced run confirms the agreement is not an
+artefact of corpus membership correlating with the label.
 
-| signal | AUC raw | AUC controlled | reading |
-|---|---|---|---|
-| `jpeg_blockiness` | 0.889 | **0.437** | pure compression history — was measuring the folder |
-| `upsampling_peak_prominence` | 0.827 | **0.405** | same; the spikes came from resolution, not from a generator |
-| `residual_energy` | 0.464 | **0.745** | real physics, and it was *hidden* by the confound |
-| `ca_radial_alignment` | 0.474 | **0.736** | lens dispersion; only visible once resolution is matched |
+With n=25 in the transfer set the standard error is roughly ±0.11, so the honest
+claim is "meaningfully better than chance, a long way short of reliable."
 
-Two signals that looked like the whole story were noise. Two that looked like
-noise are the actual evidence. That inversion is the single most useful thing in
-this repository, and it is only visible because the evaluation controls for
-capture pipeline.
+### What survives contact with a second generator
+
+Pooling the two corpora re-fits every signal, and the weight rule (below) then
+zeroes anything that fails to separate both. Four signals reverse direction
+between corpora and are automatically demoted to weight 0 — a signal that points
+at *synthetic* in one corpus and at *authentic* in the other is worse than a weak
+one, because it will confidently mislabel whichever population it was not fitted
+on.
+
+| signal | AUC `1strealtest` | AUC `Emergent` | shipped weight | verdict |
+|---|---|---|---|---|
+| `residual_energy` | 0.745 | 0.724 | **0.33** | stable across both — the workhorse |
+| `residual_kurtosis` | 0.444 | 0.205 | **0.18** | stable, and inverted (see below) |
+| `corneal_env_dissimilarity` | 0.695 | 0.580 | **0.14** | real, modest |
+| `ocular_offset_disparity` | 0.525 | 0.716 | 0.04 | weak but consistent in sign |
+| `ca_radial_alignment` | 0.736 | 0.410 | **0.00** | SIGN FLIP — was corpus, not lens physics |
+| `upsampling_peak_prominence` | 0.405 | 0.615 | **0.00** | SIGN FLIP |
+| `ocular_area_ratio` | 0.450 | 0.648 | **0.00** | SIGN FLIP |
+| `ca_radial_slope` | 0.606 | 0.487 | **0.00** | SIGN FLIP |
+| `jpeg_blockiness` | 0.437 | 0.417 | 0.00 | pure compression history, both corpora |
+
+`ca_radial_alignment` is the cautionary tale. In the single-corpus controlled
+view it looked like the second-best signal in the system and like genuine lens
+physics that the confound had been masking. Against a different generator it
+points the other way. One corpus could not have told us that.
 
 ### One finding worth stating plainly
 
-**The "AI eyes disagree with each other" heuristic is inverted on this data.**
-`ocular_angle_divergence` scores AUC 0.380 — meaning *authentic* photographs show
-**more** catch-light disagreement between the eyes than generated ones do. Real
-eyes are small, noisy and unevenly lit; modern generators produce faces that are
-*too* consistent. The system reads the signal in its measured direction and says
-so in the report, rather than asserting the textbook story.
+**The "AI eyes disagree with each other" heuristic does not hold up.**
+`ocular_angle_divergence` scored AUC 0.380 on the controlled `1strealtest` view —
+apparently a strong *inverted* signal, with authentic photographs showing **more**
+catch-light disagreement than generated ones. It was tempting to write that up as
+a real discovery about generator over-regularisation. On the second corpus it
+scores 0.455, i.e. nothing. Pooled, it carries weight 0.01.
+
+The residual statistics tell a better-supported version of the same story:
+`residual_kurtosis` is stably *inverted* across both corpora (0.444 / 0.205) —
+authentic photographs have heavier-tailed high-pass residuals than generated
+ones, which is what you would expect from real sensor noise versus a learned
+prior. The system reads every signal in its measured direction and discloses
+inversions in the report rather than asserting the textbook story.
 
 Numbers reproduce with:
 
 ```bash
 python eval/build_dataset.py --authentic <real_dir> --synthetic <fake_dir> --out data/ds
 python eval/run_eval.py --view data/ds/raw        --name raw
-python eval/run_eval.py --view data/ds/controlled --name controlled \
+python eval/run_eval.py --view data/ds/controlled --name controlled
+
+# the two that actually matter: transfer to an unseen generator, and the pooled fit
+python eval/cross_corpus.py --train data/ds/controlled --test data/ds_emergent/controlled \
+       --train-name 1strealtest --test-name emergent
+python eval/run_eval.py --view data/ds_pooled/controlled --name pooled_2corpus \
        --write-calibration sentinel/calibration.json
 ```
 
-Full per-signal tables live in `eval/report_raw.json` and
-`eval/report_controlled.json`.
+### What this means in the product
+
+A system with AUC 0.62 should not be handing out confident verdicts, and after
+the re-fit it doesn't. Scored against the 25 `Emergent` images, the shipped
+calibration returns `INCONCLUSIVE` on 18 of them, `LEANS_SYNTHETIC` on 3 (all
+correct), `LEANS_AUTHENTIC` on 3 (2 correct), and **`LIKELY_SYNTHETIC` or
+`LIKELY_AUTHENTIC` on none**. The probabilities stay bunched near 0.5 because
+that is where the evidence actually is.
+
+That is the intended behaviour. The banding thresholds were not tuned to produce
+it — they are unchanged from the single-corpus build. Widening the evidence base
+made the system quieter on its own, which is the outcome you want from a
+calibration that is telling the truth about its own uncertainty.
+
+Full per-signal tables live in `eval/report_raw.json`, `eval/report_controlled.json`,
+`eval/report_transfer.json`, `eval/report_pooled.json` and
+`eval/report_pooled_balanced.json`.
 
 ---
 
@@ -92,7 +149,7 @@ Three rules keep that honest:
 - **Weight is earned, not assigned.** A signal's weight comes from the
   discriminative power it actually demonstrated (`|AUC − 0.5|`). A signal that
   didn't separate the calibration set contributes exactly nothing, however
-  scientifically appealing it sounds. Seven of thirteen signals currently score
+  scientifically appealing it sounds. Nine of thirteen signals currently score
   zero, and the report names them.
 - **No single signal can dominate.** Each is clipped to ±2.5 nats.
 - **Unmeasurable signals abstain.** No face means the ocular signals drop out
@@ -242,7 +299,7 @@ sentinel/
   fusion.py        calibrated log-odds fusion, abstention, coverage
   explain.py       "Dakota" narrative layer
   detect.py        face/eye detection ladder
-  calibration.json fitted on the controlled view — the only thresholds anywhere
+  calibration.json fitted on the pooled two-corpus view — the only thresholds anywhere
   image/           ocular · optics · spectral · provenance · pipeline
   text/            playbooks · classifier · stylometry · pipeline
   api.py           FastAPI (+ /forensics/ocular-comparator compatibility shim)

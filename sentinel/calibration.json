@@ -1,49 +1,49 @@
 {
   "meta": {
     "fused_loo": {
-      "auc": 0.7748,
+      "auc": 0.6245,
       "best_operating_point": {
-        "accuracy": 0.8163,
-        "sensitivity": 0.6667,
-        "specificity": 0.8649,
-        "threshold": 0.56
+        "accuracy": 0.7162,
+        "sensitivity": 0.2,
+        "specificity": 0.9796,
+        "threshold": 0.63
       },
-      "mean_score_authentic": 0.4007,
-      "mean_score_synthetic": 0.5342,
-      "n_authentic": 37,
-      "n_synthetic": 12
+      "mean_score_authentic": 0.4712,
+      "mean_score_synthetic": 0.513,
+      "n_authentic": 49,
+      "n_synthetic": 25
     },
-    "n_images": 49,
+    "n_images": 74,
     "per_signal": {
       "ca_radial_alignment": {
-        "auc": 0.736,
+        "auc": 0.569,
         "coverage": 1.0,
         "fitted": true,
-        "median_authentic": 0.63721,
-        "median_synthetic": 0.69032,
-        "n_authentic": 37,
-        "n_synthetic": 12,
-        "weight": 0.373
+        "median_authentic": 0.63185,
+        "median_synthetic": 0.64861,
+        "n_authentic": 49,
+        "n_synthetic": 25,
+        "weight": 0.0
       },
       "ca_radial_slope": {
-        "auc": 0.606,
+        "auc": 0.545,
         "coverage": 1.0,
         "fitted": true,
         "median_authentic": -0.05213,
-        "median_synthetic": 0.02114,
-        "n_authentic": 37,
-        "n_synthetic": 12,
-        "weight": 0.062
+        "median_synthetic": 0.01576,
+        "n_authentic": 49,
+        "n_synthetic": 25,
+        "weight": 0.0
       },
       "corneal_env_dissimilarity": {
-        "auc": 0.695,
-        "coverage": 0.612,
+        "auc": 0.64,
+        "coverage": 0.662,
         "fitted": true,
-        "median_authentic": 0.5941,
-        "median_synthetic": 0.62162,
-        "n_authentic": 20,
-        "n_synthetic": 10,
-        "weight": 0.274
+        "median_authentic": 0.5937,
+        "median_synthetic": 0.61795,
+        "n_authentic": 31,
+        "n_synthetic": 18,
+        "weight": 0.142
       },
       "exif_capture_completeness": {
         "auc": 0.5,
@@ -51,8 +51,8 @@
         "fitted": true,
         "median_authentic": 0.0,
         "median_synthetic": 0.0,
-        "n_authentic": 37,
-        "n_synthetic": 12,
+        "n_authentic": 49,
+        "n_synthetic": 25,
         "weight": 0.0
       },
       "generator_tag_present": {
@@ -61,129 +61,129 @@
         "fitted": true,
         "median_authentic": 0.0,
         "median_synthetic": 0.0,
-        "n_authentic": 37,
-        "n_synthetic": 12,
+        "n_authentic": 49,
+        "n_synthetic": 25,
         "weight": 0.0
       },
       "jpeg_blockiness": {
-        "auc": 0.437,
+        "auc": 0.426,
         "coverage": 1.0,
         "fitted": true,
         "median_authentic": 1.08705,
-        "median_synthetic": 1.07998,
-        "n_authentic": 37,
-        "n_synthetic": 12,
+        "median_synthetic": 1.07886,
+        "n_authentic": 49,
+        "n_synthetic": 25,
         "weight": 0.0
       },
       "ocular_angle_divergence": {
-        "auc": 0.38,
-        "coverage": 0.612,
+        "auc": 0.416,
+        "coverage": 0.662,
         "fitted": true,
-        "median_authentic": 71.614,
+        "median_authentic": 54.693,
         "median_synthetic": 47.1665,
-        "n_authentic": 20,
-        "n_synthetic": 10,
-        "weight": 0.095
+        "n_authentic": 31,
+        "n_synthetic": 18,
+        "weight": 0.01
       },
       "ocular_area_ratio": {
-        "auc": 0.45,
-        "coverage": 0.612,
+        "auc": 0.511,
+        "coverage": 0.662,
         "fitted": true,
-        "median_authentic": 2.48725,
+        "median_authentic": 1.8932,
         "median_synthetic": 1.7386,
-        "n_authentic": 20,
-        "n_synthetic": 10,
+        "n_authentic": 31,
+        "n_synthetic": 18,
         "weight": 0.0
       },
       "ocular_circularity_delta": {
-        "auc": 0.51,
-        "coverage": 0.612,
+        "auc": 0.52,
+        "coverage": 0.662,
         "fitted": true,
-        "median_authentic": 0.11484,
-        "median_synthetic": 0.07767,
-        "n_authentic": 20,
-        "n_synthetic": 10,
+        "median_authentic": 0.13061,
+        "median_synthetic": 0.10991,
+        "n_authentic": 31,
+        "n_synthetic": 18,
         "weight": 0.0
       },
       "ocular_offset_disparity": {
-        "auc": 0.525,
-        "coverage": 0.612,
+        "auc": 0.597,
+        "coverage": 0.662,
         "fitted": true,
-        "median_authentic": 0.1366,
-        "median_synthetic": 0.12115,
-        "n_authentic": 20,
-        "n_synthetic": 10,
-        "weight": 0.0
+        "median_authentic": 0.11115,
+        "median_synthetic": 0.15093,
+        "n_authentic": 31,
+        "n_synthetic": 18,
+        "weight": 0.04
       },
       "residual_energy": {
-        "auc": 0.745,
+        "auc": 0.718,
         "coverage": 1.0,
         "fitted": true,
-        "median_authentic": 7.09971,
-        "median_synthetic": 8.67276,
-        "n_authentic": 37,
-        "n_synthetic": 12,
-        "weight": 0.394
+        "median_authentic": 7.03694,
+        "median_synthetic": 8.32721,
+        "n_authentic": 49,
+        "n_synthetic": 25,
+        "weight": 0.329
       },
       "residual_kurtosis": {
-        "auc": 0.444,
+        "auc": 0.343,
         "coverage": 1.0,
         "fitted": true,
-        "median_authentic": 10.11561,
-        "median_synthetic": 10.44245,
-        "n_authentic": 37,
-        "n_synthetic": 12,
-        "weight": 0.0
+        "median_authentic": 10.43672,
+        "median_synthetic": 8.7134,
+        "n_authentic": 49,
+        "n_synthetic": 25,
+        "weight": 0.184
       },
       "upsampling_peak_prominence": {
-        "auc": 0.405,
+        "auc": 0.456,
         "coverage": 1.0,
         "fitted": true,
-        "median_authentic": 3.9814,
-        "median_synthetic": 3.8153,
-        "n_authentic": 37,
-        "n_synthetic": 12,
-        "weight": 0.035
+        "median_authentic": 3.8643,
+        "median_synthetic": 3.9147,
+        "n_authentic": 49,
+        "n_synthetic": 25,
+        "weight": 0.0
       }
     },
-    "source": "/home/user/data/ds/controlled",
-    "view": "controlled"
+    "source": "/home/user/data/ds_pooled/controlled",
+    "view": "pooled_2corpus"
   },
   "prior_log_odds": 0.0,
   "signals": {
     "ca_radial_alignment": {
-      "auc": 0.7364864864864865,
-      "mu_authentic": 0.6398062162162161,
-      "mu_synthetic": 0.6871083333333332,
-      "n_authentic": 37,
-      "n_synthetic": 12,
-      "sd_authentic": 0.07138366814317454,
-      "sd_synthetic": 0.042100018177615495
+      "auc": 0.5689795918367347,
+      "mu_authentic": 0.6408942857142857,
+      "mu_synthetic": 0.654688,
+      "n_authentic": 49,
+      "n_synthetic": 25,
+      "sd_authentic": 0.07072081834183463,
+      "sd_synthetic": 0.055877168432195985
     },
     "ca_radial_slope": {
-      "auc": 0.6058558558558559,
-      "mu_authentic": -0.11198351351351352,
-      "mu_synthetic": 0.05693099999999999,
-      "n_authentic": 37,
-      "n_synthetic": 12,
-      "sd_authentic": 0.5304287909598372,
-      "sd_synthetic": 0.13431919325807462
+      "auc": 0.5453061224489796,
+      "mu_authentic": -0.07195014285714285,
+      "mu_synthetic": -0.014722359999999995,
+      "n_authentic": 49,
+      "n_synthetic": 25,
+      "sd_authentic": 0.5410802487578315,
+      "sd_synthetic": 0.26758918409694815
     },
     "corneal_env_dissimilarity": {
-      "auc": 0.695,
-      "mu_authentic": 0.5913475,
-      "mu_synthetic": 0.6671980000000002,
-      "n_authentic": 20,
-      "n_synthetic": 10,
-      "sd_authentic": 0.12754268383074743,
-      "sd_synthetic": 0.10062626523925054
+      "auc": 0.6397849462365591,
+      "mu_authentic": 0.5909851612903225,
+      "mu_synthetic": 0.6466299999999998,
+      "n_authentic": 31,
+      "n_synthetic": 18,
+      "sd_authentic": 0.12219788475205784,
+      "sd_synthetic": 0.10098692671166237
     },
     "exif_capture_completeness": {
       "auc": 0.5,
       "mu_authentic": 0.0,
       "mu_synthetic": 0.0,
-      "n_authentic": 37,
-      "n_synthetic": 12,
+      "n_authentic": 49,
+      "n_synthetic": 25,
       "sd_authentic": 0.0001,
       "sd_synthetic": 0.0001
     },
@@ -191,82 +191,82 @@
       "auc": 0.5,
       "mu_authentic": 0.0,
       "mu_synthetic": 0.0,
-      "n_authentic": 37,
-      "n_synthetic": 12,
+      "n_authentic": 49,
+      "n_synthetic": 25,
       "sd_authentic": 0.0001,
       "sd_synthetic": 0.0001
     },
     "jpeg_blockiness": {
-      "auc": 0.4369369369369369,
-      "mu_authentic": 1.087595135135135,
-      "mu_synthetic": 1.0765500000000001,
-      "n_authentic": 37,
-      "n_synthetic": 12,
-      "sd_authentic": 0.045980301341642216,
-      "sd_synthetic": 0.03592755186946828
+      "auc": 0.42612244897959184,
+      "mu_authentic": 1.088325918367347,
+      "mu_synthetic": 1.0717712,
+      "n_authentic": 49,
+      "n_synthetic": 25,
+      "sd_authentic": 0.048906668295319804,
+      "sd_synthetic": 0.039917203942160084
     },
     "ocular_angle_divergence": {
-      "auc": 0.38,
-      "mu_authentic": 77.95405,
-      "mu_synthetic": 56.11429999999999,
-      "n_authentic": 20,
-      "n_synthetic": 10,
-      "sd_authentic": 54.56265054272474,
-      "sd_synthetic": 30.146009570256552
+      "auc": 0.4157706093189964,
+      "mu_authentic": 73.7931290322581,
+      "mu_synthetic": 55.290833333333325,
+      "n_authentic": 31,
+      "n_synthetic": 18,
+      "sd_authentic": 53.14508792811032,
+      "sd_synthetic": 37.825899168647226
     },
     "ocular_area_ratio": {
-      "auc": 0.45,
-      "mu_authentic": 9.549940000000001,
-      "mu_synthetic": 3.50463,
-      "n_authentic": 20,
-      "n_synthetic": 10,
-      "sd_authentic": 26.752868122210746,
-      "sd_synthetic": 3.5082428254184457
+      "auc": 0.510752688172043,
+      "mu_authentic": 7.728003225806451,
+      "mu_synthetic": 3.697361111111111,
+      "n_authentic": 31,
+      "n_synthetic": 18,
+      "sd_authentic": 21.9656913829416,
+      "sd_synthetic": 4.010634398160705
     },
     "ocular_circularity_delta": {
-      "auc": 0.51,
-      "mu_authentic": 0.1316765,
-      "mu_synthetic": 0.12578899999999998,
-      "n_authentic": 20,
-      "n_synthetic": 10,
-      "sd_authentic": 0.11988747875716631,
-      "sd_synthetic": 0.11791140915534848
+      "auc": 0.5197132616487455,
+      "mu_authentic": 0.14548290322580648,
+      "mu_synthetic": 0.14122500000000002,
+      "n_authentic": 31,
+      "n_synthetic": 18,
+      "sd_authentic": 0.12787907907771634,
+      "sd_synthetic": 0.1055040129436896
     },
     "ocular_offset_disparity": {
-      "auc": 0.525,
-      "mu_authentic": 0.15393099999999998,
-      "mu_synthetic": 0.16623899999999997,
-      "n_authentic": 20,
-      "n_synthetic": 10,
-      "sd_authentic": 0.14054084850675977,
-      "sd_synthetic": 0.13147370759585356
+      "auc": 0.5967741935483871,
+      "mu_authentic": 0.13741741935483873,
+      "mu_synthetic": 0.17121666666666666,
+      "n_authentic": 31,
+      "n_synthetic": 18,
+      "sd_authentic": 0.13458571908058092,
+      "sd_synthetic": 0.12409780994575743
     },
     "residual_energy": {
-      "auc": 0.7454954954954955,
-      "mu_authentic": 7.343559729729729,
-      "mu_synthetic": 8.893758333333334,
-      "n_authentic": 37,
-      "n_synthetic": 12,
-      "sd_authentic": 1.7460202169729608,
-      "sd_synthetic": 1.4376841598895156
+      "auc": 0.7183673469387755,
+      "mu_authentic": 7.241543265306123,
+      "mu_synthetic": 9.0434384,
+      "n_authentic": 49,
+      "n_synthetic": 25,
+      "sd_authentic": 1.7096077146973228,
+      "sd_synthetic": 2.5115203625257427
     },
     "residual_kurtosis": {
-      "auc": 0.4436936936936937,
-      "mu_authentic": 11.895694594594595,
-      "mu_synthetic": 10.324420833333333,
-      "n_authentic": 37,
-      "n_synthetic": 12,
-      "sd_authentic": 6.075781760851892,
-      "sd_synthetic": 4.207126480062249
+      "auc": 0.34285714285714286,
+      "mu_authentic": 12.172172448979593,
+      "mu_synthetic": 9.2029592,
+      "n_authentic": 49,
+      "n_synthetic": 25,
+      "sd_authentic": 5.918218515932359,
+      "sd_synthetic": 4.429002139743822
     },
     "upsampling_peak_prominence": {
-      "auc": 0.40540540540540543,
-      "mu_authentic": 4.25048918918919,
-      "mu_synthetic": 3.9012583333333333,
-      "n_authentic": 37,
-      "n_synthetic": 12,
-      "sd_authentic": 0.9697322733854375,
-      "sd_synthetic": 0.5027137960747535
+      "auc": 0.4563265306122449,
+      "mu_authentic": 4.1344,
+      "mu_synthetic": 3.89876,
+      "n_authentic": 49,
+      "n_synthetic": 25,
+      "sd_authentic": 0.9230455051024278,
+      "sd_synthetic": 0.49697118387286804
     }
   }
 }
