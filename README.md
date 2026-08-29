@@ -134,6 +134,56 @@ Full per-signal tables live in `eval/report_raw.json`, `eval/report_controlled.j
 
 ---
 
+## `Social media pics`: the gate that had to exist
+
+The third corpus in this project is not faces at all. `Social media pics` is 17
+phone screenshots — Telegram, TikTok, Facebook, Threads, Messages, X, Zangi —
+and running them through the image pipeline exposed the worst failure mode the
+system had.
+
+**Before the fix**, the pipeline scored every one of them without complaint:
+`LEANS_SYNTHETIC` on three, `LEANS_AUTHENTIC` on four, coverage 1.00, no
+indication that anything was wrong.
+
+Those numbers were meaningless. Every signal in the pipeline is a statement
+about a *capture pipeline* — sensor noise residuals, lens dispersion, JPEG
+history. A screenshot has none of that: the phone's compositor drew it, so the
+residual statistics describe a display buffer. The calibration, fitted on
+photographs, had no idea what it was looking at, and said so with a probability
+to three decimal places.
+
+`sentinel/image/screen.py` is now a **gate, not a signal**. It contributes no
+evidence to the fused score; when it fires the verdict is refused outright as
+`INCONCLUSIVE_NOT_A_PHOTOGRAPH`, with `p_synthetic: null` rather than a number.
+Three scale-free structural cues, none of which rely on EXIF (trivially
+stripped):
+
+| cue | screenshots (n=17) | photographs (n=80) |
+|---|---|---|
+| `uniform_run` — longest near-constant horizontal run, as a fraction of width | median **0.999** | max **0.402** |
+| `flat_region_fraction` — 8×8 tiles with essentially zero variance | median **0.545** | max **0.299** |
+| `palette_ratio` — distinct colours per pixel, nearest-neighbour resampled | median **0.188** | min **0.216** |
+
+Photographs almost never contain a truly flat 8×8 patch, because sensors have
+noise; interfaces are full of them. The rule is deliberately biased against
+firing, because wrongly refusing a real photograph is worse than analysing a
+screenshot:
+
+> **recall 16/17 (94%), false positives 0/80.**
+
+The single miss is a screenshot whose content is mostly one large photograph —
+the expected boundary case, and the one where running the photo pipeline does
+least harm. Those thresholds are fitted to this data and validated against phone
+screenshots of chat and social apps; they are not validated against scans,
+photographs-of-screens, or heavy graphic design.
+
+The user-facing message matters as much as the detection. A refusal says *"this
+is a screenshot, send me the original file"* — not *"this is fake"*. Someone who
+screenshots a dating profile and asks "is this AI?" deserves an honest "I can't
+tell from this" rather than a fabricated probability.
+
+---
+
 ## How the scoring works
 
 Every threshold lives in `sentinel/calibration.json`, not in code. A calibration

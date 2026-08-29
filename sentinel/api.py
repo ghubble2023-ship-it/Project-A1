@@ -151,7 +151,15 @@ async def ocular_comparator_compat(file: UploadFile = File(...)) -> dict[str, An
             "environment_dissimilarity": val("corneal_env_dissimilarity"),
             "anomaly_score": verdict["p_synthetic"],
             "verdict": verdict["label"],
-            "is_authentic_geometry": verdict["p_synthetic"] < 0.5,
+            # None, not a default, when the screen-capture gate refused to score.
+            # Older clients treat this field as a tri-state; inventing True or
+            # False here would put a fabricated judgement back into the response
+            # the gate exists to prevent.
+            "is_authentic_geometry": (
+                None
+                if verdict["p_synthetic"] is None
+                else verdict["p_synthetic"] < 0.5
+            ),
         },
         "dakota_report": {
             "analyst_persona": "Dakota",
